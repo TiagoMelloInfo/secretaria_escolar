@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+
+{% block container %}
+    <h1>{{ titulo }}</h1>
+
+    <table id="opcoes_alunos">
+        <a href="{% url 'novo_aluno' %}">
+            <button>Novo</button>
+        </a>
+    </table>
+    <br>
+    <table id="lista_alunos">
+
+    {% for aluno in alunos %}
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th></th>
+        <th></th>
+    </tr>
+        <tr>
+            <td>{{ aluno.aluno_id }}</td> 
+            <td>{{ aluno.nome }} {{ aluno.sobrenome }}</td>
+            <td>
+                <a href="{% url 'consulta_aluno' aluno.aluno_id %}" target="_self">
+                    <button>Consulta</button>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
+

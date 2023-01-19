@@ -1,0 +1,81 @@
+{% extends '_base.html' %}
+
+{% block container %}
+    <h1>{{ aluno.nome }} {{ aluno.sobrenome }}</h1>
+
+    <table>
+        <td>
+            <a href="{% url 'alunos_home' %}">
+                <button class="btn-warning">Voltar</button>
+            </a>
+        </td>
+        <td>
+            <a>
+                <button>Matricula</button>
+            </a>
+        </td>
+        <td>
+            <a>
+                <button>Pagamento</button>
+            </a>
+        </td>
+    </table>
+    <br><br>
+    <table>
+        <tr>
+            <th></th>
+            <th>Novo</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                <a href="{% url 'novo_telefone' aluno.aluno_id %}">
+                    <button>Telefone</button>
+                </a>
+            </td>
+            <td>
+                <a>
+                    <button>Endereço</button>
+                </a>
+            </td>
+            <td>
+                <a>
+                    <button>Responsável</button>
+                </a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <table>
+    <tr>
+        <td>Nome</td>
+        <td>{{ aluno.nome }} {{ aluno.sobrenome }}</td>
+    </tr>
+    <tr>
+        <td>Idade</td>
+        <td>{{ idade }}</td>
+    </tr>
+    {% for telefone in aluno.telefones %}
+        <tr>
+            <td>Telefone</td>
+            <td>({{ telefone.ddd }}) {{ telefone.telefone }}</td>
+            {% if telefone.is_whatsapp %}
+                <td>
+                    <a href="https://wa.me/55{{ telefone.ddd }}{{ telefone.telefone }}" target="_blank">
+                        <button>Whatsapp</button>
+                    </a>
+                </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    {% for endereco in aluno.enderecos %}
+        <tr>
+            <td>Endereço</td>
+            <td>{{ endereco }}</td>
+        </tr>
+    {% endfor %}
+    
+    </table>
+    
+{% endblock %}
+

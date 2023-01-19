@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block container %}
+    <h1>{{ titulo }}</h1>
+    <form action="{% url 'novo_aluno' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="nome">Nome</label><br>
+        <input name="nome" id="nome" placeholder="Nome" type="text"><br><br>
+        <label for="sobrenome">Sobrenome</label><br>
+        <input name="sobrenome" id="sobrenome" placeholder="Sobrenome" type="text"><br><br>
+        <label for="nascimento">Data de nascimento</label><br>
+        <input name="nascimento" id="nascimento" type="date"> <br><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}
+
