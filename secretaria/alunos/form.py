@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Aluno
+from .models import Aluno, Matricula, Mensalidade
 
 class AlunoForm(ModelForm):
     class Meta:
@@ -16,3 +16,12 @@ class TelefoneForm(ModelForm):
         fields = [
             'telefones'
         ]
+
+class MatriculaForm(ModelForm):
+    class Meta:
+        model = Matricula
+        fields = [
+            'valor_mensal',
+            'dia_vencimento'
+        ]
+
